@@ -1,5 +1,5 @@
 export class UseCase {
-  execute() {
+  execute(param: any) {
     throw new Error('[UseCase#execute] should be implemented')
   }
 }

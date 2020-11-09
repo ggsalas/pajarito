@@ -1,9 +1,9 @@
 export class UserRepository {
-  register() {
+  register(param: any) {
     throw new Error('[UserRepository#register] should be implemented')
   }
 
-  login() {
+  login(param: any) {
     throw new Error('[UserRepository#login] should be implemented')
   }
 

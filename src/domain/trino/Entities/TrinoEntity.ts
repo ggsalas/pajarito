@@ -4,14 +4,19 @@ import {UserEntity} from '../../user/Entities/UserEntity'
 import {BodyValueObject} from '../ValueObjects/BodyValueObject'
 
 export class TrinoEntity extends Entity {
-  #timestamp
-  #body
-  #id
-  #user
+  timestamp
+  body
+  id
+  user
 
   static generateUUID() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, a =>
-      (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
+    return (
+      Math.random()
+        .toString(36)
+        .substring(2, 15) +
+      Math.random()
+        .toString(36)
+        .substring(2, 15)
     )
   }
 
@@ -37,18 +42,18 @@ export class TrinoEntity extends Entity {
 
   constructor({body, id, user, timestamp}) {
     super()
-    this.#timestamp = timestamp
-    this.#id = id
-    this.#body = body
-    this.#user = user
+    this.timestamp = timestamp
+    this.id = id
+    this.body = body
+    this.user = user
   }
 
   toJSON() {
     return {
-      id: this.#id,
-      timestamp: this.#timestamp,
-      body: this.#body.toJSON(),
-      user: this.#user.toJSON()
+      id: this.id,
+      timestamp: this.timestamp,
+      body: this.body.toJSON(),
+      user: this.user.toJSON()
     }
   }
 }

@@ -1,9 +1,9 @@
 export class TrinoRepository {
-  create() {
+  create(param: any) {
     throw new Error('[TrinoRepository#create] should be implemented')
   }
 
-  all() {
+  all(param: any) {
     throw new Error('[TrinoRepository#all] should be implemented')
   }
 }
