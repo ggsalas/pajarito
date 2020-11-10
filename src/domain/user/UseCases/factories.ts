@@ -1,27 +1,27 @@
-import {UserServicesFactory} from '../Services/factory'
-import {UserRepositoriesFactory} from '../Repositories/factories'
-import {UserValueObjectsFactory} from '../ValueObjects/factories'
+import { UserServicesFactory } from "../Services/factory";
+import { UserRepositoriesFactory } from "../Repositories/factories";
+import { UserValueObjectsFactory } from "../ValueObjects/factories";
 
-import {CurrentUserUseCase} from './CurrentUserUseCase'
-import {RegisterUserUseCase} from './RegisterUserUseCase'
-import {LoginUserUseCase} from './LoginUserUseCase'
-import {LogoutUserUseCase} from './LogoutUserUseCase'
+import { CurrentUserUseCase } from "./CurrentUserUseCase";
+import { RegisterUserUseCase } from "./RegisterUserUseCase";
+import { LoginUserUseCase } from "./LoginUserUseCase";
+import { LogoutUserUseCase } from "./LogoutUserUseCase";
 
-const isNODE = typeof window === 'undefined'
+const isNODE = typeof window === "undefined";
 
 export class UserUseCasesFactory {
   static currentUserUseCase() {
     return new CurrentUserUseCase({
-      service: UserServicesFactory.currentUserService()
-    })
+      service: UserServicesFactory.currentUserService(),
+    });
   }
 
   static logoutUserUseCase() {
     return new LogoutUserUseCase({
       repository: isNODE
         ? UserRepositoriesFactory.inMemoryUserRepository()
-        : UserRepositoriesFactory.localStorageUserRepository()
-    })
+        : UserRepositoriesFactory.localStorageUserRepository(),
+    });
   }
 
   static loginUserUseCase() {
@@ -30,8 +30,8 @@ export class UserUseCasesFactory {
         ? UserRepositoriesFactory.inMemoryUserRepository()
         : UserRepositoriesFactory.localStorageUserRepository(),
       usernameValueObjectFactory: UserValueObjectsFactory.usernameValueObject,
-      passwordValueObjectFactory: UserValueObjectsFactory.passwordValueObject
-    })
+      passwordValueObjectFactory: UserValueObjectsFactory.passwordValueObject,
+    });
   }
 
   static registerUserUseCase() {
@@ -40,7 +40,7 @@ export class UserUseCasesFactory {
         ? UserRepositoriesFactory.inMemoryUserRepository()
         : UserRepositoriesFactory.localStorageUserRepository(),
       usernameValueObjectFactory: UserValueObjectsFactory.usernameValueObject,
-      passwordValueObjectFactory: UserValueObjectsFactory.passwordValueObject
-    })
+      passwordValueObjectFactory: UserValueObjectsFactory.passwordValueObject,
+    });
   }
 }

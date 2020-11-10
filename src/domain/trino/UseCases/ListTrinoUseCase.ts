@@ -1,18 +1,18 @@
-import {UseCase} from '../../common/UseCase'
+import { UseCase } from "../../common/UseCase";
 
 export class ListTrinoUseCase extends UseCase {
-  somethingWrongTrinoErrorFactory
-  repository
+  somethingWrongTrinoErrorFactory;
+  repository;
 
-  constructor({repository, somethingWrongTrinoErrorFactory}) {
-    super()
-    this.repository = repository
-    this.somethingWrongTrinoErrorFactory = somethingWrongTrinoErrorFactory
+  constructor({ repository, somethingWrongTrinoErrorFactory }) {
+    super();
+    this.repository = repository;
+    this.somethingWrongTrinoErrorFactory = somethingWrongTrinoErrorFactory;
   }
 
   async execute() {
-    const TrinosList = await this.repository.all()
+    const TrinosList = await this.repository.all();
 
-    return TrinosList.toJSON()
+    return TrinosList.toJSON();
   }
 }

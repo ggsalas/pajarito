@@ -1,17 +1,17 @@
-import {Service} from '../../common/Service'
+import { Service } from "../../common/Service";
 
 export class CurrentUserService extends Service {
-  #repository
+  #repository;
 
-  constructor({repository}) {
-    super()
+  constructor({ repository }) {
+    super();
 
-    this.#repository = repository
+    this.#repository = repository;
   }
 
   async execute() {
-    const user = await this.#repository.current()
+    const user = await this.#repository.current();
 
-    return user
+    return user;
   }
 }

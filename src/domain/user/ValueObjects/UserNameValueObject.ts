@@ -1,31 +1,31 @@
-import {ValueObject} from '../../common/ValueObject'
+import { ValueObject } from "../../common/ValueObject";
 
-const MIN_LENGTH = 4
+const MIN_LENGTH = 4;
 
 export class UserNameValueObject extends ValueObject {
-  #username
+  #username;
 
-  static validate({username}) {
+  static validate({ username }) {
     if (!username || !username.length || username.length < MIN_LENGTH) {
       throw new Error(
         `[UserNameValueObject.validate] forbidden username lower than ${MIN_LENGTH} characters`
-      )
+      );
     }
   }
 
-  constructor({username}) {
-    super()
+  constructor({ username }) {
+    super();
 
-    this.#username = username
+    this.#username = username;
   }
 
   value() {
-    return this.#username
+    return this.#username;
   }
 
   toJSON() {
     return {
-      username: this.#username
-    }
+      username: this.#username,
+    };
   }
 }

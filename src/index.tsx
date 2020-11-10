@@ -1,14 +1,23 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-import {Pajarito} from './domain'
+/* eslint-disable */
+declare global {
+  interface Window {
+    heap: any;
+    walkMe: any;
+    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
+  }
+}
 
-const pajarito = new Pajarito()
+import { Pajarito } from "./domain";
+
+const pajarito = new Pajarito();
 
 async function render() {
-  const result = await pajarito.get('listTrinoUseCase').execute()
-  console.log(result)
+  const result = await pajarito.get("listTrinoUseCase").execute();
+  console.log(result);
 
   // switch (error.constructor.name) {
   //   case 'NotFoundListTrinoError':
@@ -25,8 +34,8 @@ async function render() {
       {/*   <pre>{trinos && JSON.stringify(trinos, null, 2)}</pre> */}
       {/* </code> */}
     </React.StrictMode>,
-    document.getElementById('root')
-  )
+    document.getElementById("root")
+  );
 }
 
-render()
+render();

@@ -1,12 +1,12 @@
-import {NotFoundListTrinoError} from './NotFoundListTrinoError'
-import {SomethingWrongTrinoError} from './SomethingWrongTrinoError'
+import { NotFoundListTrinoError } from "./NotFoundListTrinoError";
+import { SomethingWrongTrinoError } from "./SomethingWrongTrinoError";
 
 export class TrinoErrorsFactory {
   static notFoundListTrinoError() {
-    return new NotFoundListTrinoError()
+    return new NotFoundListTrinoError();
   }
 
   static somethingWrongTrinoError() {
-    return new SomethingWrongTrinoError()
+    return new SomethingWrongTrinoError();
   }
 }

@@ -1,17 +1,17 @@
-import {UseCase} from '../../common/UseCase'
+import { UseCase } from "../../common/UseCase";
 
 export class CurrentUserUseCase extends UseCase {
-  #service
+  #service;
 
-  constructor({service}) {
-    super()
+  constructor({ service }) {
+    super();
 
-    this.#service = service
+    this.#service = service;
   }
 
   async execute() {
-    const user = await this.#service.execute()
+    const user = await this.#service.execute();
 
-    return user.toJSON()
+    return user.toJSON();
   }
 }

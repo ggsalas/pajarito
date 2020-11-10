@@ -1,17 +1,17 @@
-import {UseCase} from '../../common/UseCase'
+import { UseCase } from "../../common/UseCase";
 
 export class LogoutUserUseCase extends UseCase {
-  #repository
+  #repository;
 
-  constructor({repository}) {
-    super()
+  constructor({ repository }) {
+    super();
 
-    this.#repository = repository
+    this.#repository = repository;
   }
 
   async execute() {
-    const logoutUserStatus = await this.#repository.logout()
+    const logoutUserStatus = await this.#repository.logout();
 
-    return logoutUserStatus.toJSON()
+    return logoutUserStatus.toJSON();
   }
 }

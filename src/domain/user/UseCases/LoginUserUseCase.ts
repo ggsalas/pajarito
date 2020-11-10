@@ -1,27 +1,27 @@
-import {UseCase} from '../../common/UseCase'
+import { UseCase } from "../../common/UseCase";
 
 export class LoginUserUseCase extends UseCase {
-  #repository
-  #usernameValueObjectFactory
-  #passwordValueObjectFactory
+  #repository;
+  #usernameValueObjectFactory;
+  #passwordValueObjectFactory;
 
   constructor({
     repository,
     usernameValueObjectFactory,
-    passwordValueObjectFactory
+    passwordValueObjectFactory,
   }) {
-    super()
-    this.#repository = repository
-    this.#usernameValueObjectFactory = usernameValueObjectFactory
-    this.#passwordValueObjectFactory = passwordValueObjectFactory
+    super();
+    this.#repository = repository;
+    this.#usernameValueObjectFactory = usernameValueObjectFactory;
+    this.#passwordValueObjectFactory = passwordValueObjectFactory;
   }
 
-  async execute({username, password}) {
+  async execute({ username, password }) {
     const user = await this.#repository.login({
-      username: this.#usernameValueObjectFactory({username}),
-      password: this.#passwordValueObjectFactory({password})
-    })
+      username: this.#usernameValueObjectFactory({ username }),
+      password: this.#passwordValueObjectFactory({ password }),
+    });
 
-    return user.toJSON()
+    return user.toJSON();
   }
 }
