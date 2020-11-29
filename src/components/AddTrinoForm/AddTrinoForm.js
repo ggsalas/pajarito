@@ -48,5 +48,5 @@ export function AddTrinoForm({ cb }) {
 }
 
 AddTrinoForm.propTypes = {
-  cb: PropTypes.func,
+  cb: PropTypes.function,
 }
