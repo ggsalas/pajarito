@@ -1,7 +1,7 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import s from './Register.module.scss';
-import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
+import React from 'react'
+import Container from '@material-ui/core/Container'
+import s from './Register.module.scss'
+import { RegisterForm } from '../../components/RegisterForm/RegisterForm'
 
 export function Register() {
   return (
@@ -10,5 +10,5 @@ export function Register() {
         <RegisterForm />
       </div>
     </Container>
-  );
+  )
 }

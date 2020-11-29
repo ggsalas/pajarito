@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useContext } from 'react'
+import { Route, Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
-import { Global } from '../../contexts/global';
+import { Global } from '../../contexts/global'
 
 export function PrivateRoute({ component: Component, ...rest }) {
-  const { domain } = useContext(Global);
-  const [user, setUser] = useState(null);
+  const { domain } = useContext(Global)
+  const [user, setUser] = useState(null)
 
   // needs login on each refresh
   useEffect(() => {
@@ -15,11 +15,11 @@ export function PrivateRoute({ component: Component, ...rest }) {
       .execute()
       .then(([error, data]) => {
         if (error) {
-          return window.alert(error.message);
+          return window.alert(error.message)
         }
-        setUser(data);
-      });
-  }, [domain]);
+        setUser(data)
+      })
+  }, [domain])
 
   return (
     <Route
@@ -37,9 +37,9 @@ export function PrivateRoute({ component: Component, ...rest }) {
         )
       }
     />
-  );
+  )
 }
 
 PrivateRoute.propTypes = {
   component: PropTypes.elementType,
-};
+}

@@ -1,7 +1,7 @@
-import { TrinoError } from './TrinoError';
+import { TrinoError } from './TrinoError'
 
 export class SomethingWrongTrinoError extends TrinoError {
   constructor() {
-    super('[SomethingWrongTrinoError] TODO MAL!');
+    super('[SomethingWrongTrinoError] TODO MAL!')
   }
 }

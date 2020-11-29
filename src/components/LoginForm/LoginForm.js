@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Paper from '@material-ui/core/Paper';
-import s from './LoginForm.module.scss';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Link, useHistory } from 'react-router-dom';
-import { Global } from '../../contexts/global';
+import React, { useState, useEffect, useContext } from 'react'
+import Paper from '@material-ui/core/Paper'
+import s from './LoginForm.module.scss'
+import TextField from '@material-ui/core/TextField'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import { Link, useHistory } from 'react-router-dom'
+import { Global } from '../../contexts/global'
 
 export function LoginForm() {
-  const { domain } = useContext(Global);
-  const [data, setData] = useState({});
-  const history = useHistory();
+  const { domain } = useContext(Global)
+  const [data, setData] = useState({})
+  const history = useHistory()
 
   useEffect(() => {
     domain
@@ -18,22 +18,22 @@ export function LoginForm() {
       .execute()
       .then(([error, user]) => {
         if (error) {
-          return null;
+          return null
         }
-        user && history.push('/');
-      });
-  }, [domain, history]);
+        user && history.push('/')
+      })
+  }, [domain, history])
 
   async function onLogin(e) {
-    e.preventDefault();
-    await domain.get('loginUserUseCase').execute(data);
-    history.push('/');
+    e.preventDefault()
+    await domain.get('loginUserUseCase').execute(data)
+    history.push('/')
   }
 
   function onChange(e) {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    setData({ ...data, [name]: value });
+    setData({ ...data, [name]: value })
   }
 
   return (
@@ -66,5 +66,5 @@ export function LoginForm() {
         </div>
       </form>
     </Paper>
-  );
+  )
 }

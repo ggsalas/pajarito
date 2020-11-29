@@ -1,21 +1,21 @@
-import { streamify, asyncInlineError } from '../../../decorators';
-import { UseCase } from '../../common/UseCase';
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class LoginUserUseCase extends UseCase {
-  #repository;
-  #usernameValueObjectFactory;
-  #passwordValueObjectFactory;
+  #repository
+  #usernameValueObjectFactory
+  #passwordValueObjectFactory
 
   constructor({
     repository,
     usernameValueObjectFactory,
     passwordValueObjectFactory,
   }) {
-    super();
-    this.#repository = repository;
-    this.#usernameValueObjectFactory = usernameValueObjectFactory;
-    this.#passwordValueObjectFactory = passwordValueObjectFactory;
+    super()
+    this.#repository = repository
+    this.#usernameValueObjectFactory = usernameValueObjectFactory
+    this.#passwordValueObjectFactory = passwordValueObjectFactory
   }
 
   @asyncInlineError()
@@ -23,10 +23,10 @@ class LoginUserUseCase extends UseCase {
     const user = await this.#repository.login({
       username: this.#usernameValueObjectFactory({ username }),
       password: this.#passwordValueObjectFactory({ password }),
-    });
+    })
 
-    return user.toJSON();
+    return user.toJSON()
   }
 }
 
-export { LoginUserUseCase };
+export { LoginUserUseCase }
