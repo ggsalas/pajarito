@@ -1,12 +1,12 @@
-import {streamify, asyncInlineError} from '../../../decorators'
-import {UseCase} from '../../common/UseCase'
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class ListTrinoUseCase extends UseCase {
   #somethingWrongTrinoErrorFactory
   #repository
 
-  constructor({repository, somethingWrongTrinoErrorFactory}) {
+  constructor({ repository, somethingWrongTrinoErrorFactory }) {
     super()
     this.#repository = repository
     this.#somethingWrongTrinoErrorFactory = somethingWrongTrinoErrorFactory
@@ -24,4 +24,4 @@ class ListTrinoUseCase extends UseCase {
   }
 }
 
-export {ListTrinoUseCase}
+export { ListTrinoUseCase }

@@ -1,11 +1,11 @@
-import {ValueObject} from '../../common/ValueObject'
+import { ValueObject } from '../../common/ValueObject'
 
 const MIN_LENGTH = 4
 
 export class UserNameValueObject extends ValueObject {
   #username
 
-  static validate({username}) {
+  static validate({ username }) {
     if (!username || !username.length || username.length < MIN_LENGTH) {
       throw new Error(
         `[UserNameValueObject.validate] forbidden username lower than ${MIN_LENGTH} characters`
@@ -13,7 +13,7 @@ export class UserNameValueObject extends ValueObject {
     }
   }
 
-  constructor({username}) {
+  constructor({ username }) {
     super()
 
     this.#username = username
@@ -25,7 +25,7 @@ export class UserNameValueObject extends ValueObject {
 
   toJSON() {
     return {
-      username: this.#username
+      username: this.#username,
     }
   }
 }

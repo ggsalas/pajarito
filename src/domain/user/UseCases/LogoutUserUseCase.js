@@ -1,11 +1,11 @@
-import {streamify, asyncInlineError} from '../../../decorators'
-import {UseCase} from '../../common/UseCase'
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class LogoutUserUseCase extends UseCase {
   #repository
 
-  constructor({repository}) {
+  constructor({ repository }) {
     super()
 
     this.#repository = repository
@@ -19,4 +19,4 @@ class LogoutUserUseCase extends UseCase {
   }
 }
 
-export {LogoutUserUseCase}
+export { LogoutUserUseCase }

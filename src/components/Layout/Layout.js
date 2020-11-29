@@ -1,27 +1,27 @@
-import React, { useContext } from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Container from '@material-ui/core/Container';
-import PropTypes from 'prop-types';
-import s from './Layout.module.scss';
-import { useHistory } from 'react-router-dom';
+import React, { useContext } from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import AccountCircle from '@material-ui/icons/AccountCircle'
+import Container from '@material-ui/core/Container'
+import PropTypes from 'prop-types'
+import s from './Layout.module.scss'
+import { useHistory } from 'react-router-dom'
 
-import { Global } from '../../contexts/global';
+import { Global } from '../../contexts/global'
 
 export function Layout({ name, userName, children }) {
-  const { domain } = useContext(Global);
-  const history = useHistory();
+  const { domain } = useContext(Global)
+  const history = useHistory()
 
   async function handleLogout() {
-    const [error] = await domain.get('logoutUserUseCase').execute();
+    const [error] = await domain.get('logoutUserUseCase').execute()
 
     if (error) {
-      return window.alert(error.message);
+      return window.alert(error.message)
     }
-    history.push('/login');
+    history.push('/login')
   }
 
   return (
@@ -41,7 +41,7 @@ export function Layout({ name, userName, children }) {
       </AppBar>
       <div className={s.content}>{children}</div>
     </div>
-  );
+  )
 }
 
 Layout.propTypes = {
@@ -51,4 +51,4 @@ Layout.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
     PropTypes.element,
   ]),
-};
+}

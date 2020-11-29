@@ -1,6 +1,6 @@
-import {TrinoUseCasesFactory} from './trino/UseCases/factories'
+import { TrinoUseCasesFactory } from './trino/UseCases/factories'
 
-import {UserUseCasesFactory} from './user/UseCases/factories'
+import { UserUseCasesFactory } from './user/UseCases/factories'
 
 const USE_CASES = {
   listTrinoUseCase: TrinoUseCasesFactory.listTrinoUseCase(),
@@ -9,7 +9,7 @@ const USE_CASES = {
   currentUserUseCase: UserUseCasesFactory.currentUserUseCase(),
   logoutUserUseCase: UserUseCasesFactory.logoutUserUseCase(),
   loginUserUseCase: UserUseCasesFactory.loginUserUseCase(),
-  registerUserUseCase: UserUseCasesFactory.registerUserUseCase()
+  registerUserUseCase: UserUseCasesFactory.registerUserUseCase(),
 }
 
 export class Pajarito {

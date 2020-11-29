@@ -1,27 +1,27 @@
-import { streamify, asyncInlineError } from '../../../decorators';
-import { UseCase } from '../../common/UseCase';
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class ListTrinoUseCase extends UseCase {
-  #somethingWrongTrinoErrorFactory;
-  #repository;
+  #somethingWrongTrinoErrorFactory
+  #repository
 
   constructor({ repository, somethingWrongTrinoErrorFactory }) {
-    super();
-    this.#repository = repository;
-    this.#somethingWrongTrinoErrorFactory = somethingWrongTrinoErrorFactory;
+    super()
+    this.#repository = repository
+    this.#somethingWrongTrinoErrorFactory = somethingWrongTrinoErrorFactory
   }
 
   @asyncInlineError()
   async execute() {
-    const [error, TrinosList] = await this.#repository.all();
+    const [error, TrinosList] = await this.#repository.all()
 
     if (error) {
-      throw error;
+      throw error
     }
 
-    return TrinosList.toJSON();
+    return TrinosList.toJSON()
   }
 }
 
-export { ListTrinoUseCase };
+export { ListTrinoUseCase }

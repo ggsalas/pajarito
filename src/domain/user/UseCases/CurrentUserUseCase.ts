@@ -1,22 +1,22 @@
-import { streamify, asyncInlineError } from '../../../decorators';
-import { UseCase } from '../../common/UseCase';
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class CurrentUserUseCase extends UseCase {
-  #service;
+  #service
 
   constructor({ service }) {
-    super();
+    super()
 
-    this.#service = service;
+    this.#service = service
   }
 
   @asyncInlineError()
   async execute() {
-    const user = await this.#service.execute();
+    const user = await this.#service.execute()
 
-    return user.toJSON();
+    return user.toJSON()
   }
 }
 
-export { CurrentUserUseCase };
+export { CurrentUserUseCase }

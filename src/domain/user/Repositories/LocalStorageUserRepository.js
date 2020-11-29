@@ -1,5 +1,5 @@
-import {UserEntity} from '../Entities/UserEntity'
-import {UserRepository} from './UserRepository'
+import { UserEntity } from '../Entities/UserEntity'
+import { UserRepository } from './UserRepository'
 
 const EMPTY_DB = JSON.stringify({})
 const USERS_KEY = 'users'
@@ -10,7 +10,7 @@ export class LocalStorageUserRepository extends UserRepository {
   #userEntityFactory
   #localStorage
 
-  constructor({userEntityFactory, statusValueObjectFactory, localStorage}) {
+  constructor({ userEntityFactory, statusValueObjectFactory, localStorage }) {
     super()
 
     this.#statusValueObjectFactory = statusValueObjectFactory
@@ -36,20 +36,20 @@ export class LocalStorageUserRepository extends UserRepository {
     const usersDB = JSON.parse(usersJSON)
 
     const nextUsersDB = Object.assign(usersDB, {
-      [CURRENT_USER_KEY]: undefined
+      [CURRENT_USER_KEY]: undefined,
     })
 
     this.#localStorage.setItem(USERS_KEY, JSON.stringify(nextUsersDB))
 
-    return this.#statusValueObjectFactory({status: true})
+    return this.#statusValueObjectFactory({ status: true })
   }
 
-  async login({username, password}) {
+  async login({ username, password }) {
     const usersJSON = this.#localStorage.getItem(USERS_KEY) || EMPTY_DB
     const usersDB = JSON.parse(usersJSON)
 
     const userJSON = Object.values(usersDB).find(
-      user => user.username === username.value()
+      (user) => user.username === username.value()
     )
 
     if (!usersJSON || userJSON.password !== password.value()) {
@@ -59,8 +59,8 @@ export class LocalStorageUserRepository extends UserRepository {
     const nextUsersDB = Object.assign(usersDB, {
       [CURRENT_USER_KEY]: {
         ...userJSON,
-        password: undefined
-      }
+        password: undefined,
+      },
     })
 
     this.#localStorage.setItem(USERS_KEY, JSON.stringify(nextUsersDB))
@@ -68,7 +68,7 @@ export class LocalStorageUserRepository extends UserRepository {
     return this.#userEntityFactory(userJSON)
   }
 
-  async register({username, password}) {
+  async register({ username, password }) {
     const newUserID = UserEntity.generateUUID()
     const usersJSON = this.#localStorage.getItem(USERS_KEY) || EMPTY_DB
     const usersDB = JSON.parse(usersJSON)
@@ -86,7 +86,7 @@ export class LocalStorageUserRepository extends UserRepository {
      * */
 
     if (
-      Object.values(usersDB).some(user => user.username === username.value())
+      Object.values(usersDB).some((user) => user.username === username.value())
     ) {
       throw new Error(
         '[UserRepository#register] forbidden register already used username'
@@ -97,12 +97,15 @@ export class LocalStorageUserRepository extends UserRepository {
       [newUserID]: {
         id: newUserID,
         username: username.value(),
-        password: password.value()
-      }
+        password: password.value(),
+      },
     })
 
     this.#localStorage.setItem(USERS_KEY, JSON.stringify(nextUsersDB))
 
-    return this.#userEntityFactory({id: newUserID, username: username.value()})
+    return this.#userEntityFactory({
+      id: newUserID,
+      username: username.value(),
+    })
   }
 }

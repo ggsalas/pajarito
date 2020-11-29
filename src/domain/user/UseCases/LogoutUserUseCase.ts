@@ -1,22 +1,22 @@
-import { streamify, asyncInlineError } from '../../../decorators';
-import { UseCase } from '../../common/UseCase';
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class LogoutUserUseCase extends UseCase {
-  #repository;
+  #repository
 
   constructor({ repository }) {
-    super();
+    super()
 
-    this.#repository = repository;
+    this.#repository = repository
   }
 
   @asyncInlineError()
   async execute() {
-    const logoutUserStatus = await this.#repository.logout();
+    const logoutUserStatus = await this.#repository.logout()
 
-    return logoutUserStatus.toJSON();
+    return logoutUserStatus.toJSON()
   }
 }
 
-export { LogoutUserUseCase };
+export { LogoutUserUseCase }

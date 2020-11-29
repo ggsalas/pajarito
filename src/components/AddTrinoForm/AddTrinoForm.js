@@ -1,30 +1,30 @@
-import React, { useState, useContext } from 'react';
-import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import s from './AddTrinoForm.module.scss';
+import React, { useState, useContext } from 'react'
+import PropTypes from 'prop-types'
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import s from './AddTrinoForm.module.scss'
 
-import { Global } from '../../contexts/global';
+import { Global } from '../../contexts/global'
 
 export function AddTrinoForm({ cb }) {
-  const { domain } = useContext(Global);
-  const [data, setData] = useState({});
+  const { domain } = useContext(Global)
+  const [data, setData] = useState({})
 
   async function onAddTrino(e) {
-    e.preventDefault();
-    const [error, trino] = await domain.get('createTrinoUseCase').execute(data);
+    e.preventDefault()
+    const [error, trino] = await domain.get('createTrinoUseCase').execute(data)
 
     if (error) {
-      return window.alert(error.message);
+      return window.alert(error.message)
     }
 
-    cb(trino);
+    cb(trino)
   }
 
   function onChange(e) {
-    const { name, value } = e.target;
+    const { name, value } = e.target
 
-    setData({ ...data, [name]: value });
+    setData({ ...data, [name]: value })
   }
 
   return (
@@ -44,9 +44,9 @@ export function AddTrinoForm({ cb }) {
         </Button>
       </div>
     </form>
-  );
+  )
 }
 
 AddTrinoForm.propTypes = {
   cb: PropTypes.func,
-};
+}

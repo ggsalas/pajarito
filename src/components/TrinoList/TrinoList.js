@@ -1,8 +1,8 @@
-import React from 'react';
-import s from './TrinoList.module.scss';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import PropTypes from 'prop-types';
+import React from 'react'
+import s from './TrinoList.module.scss'
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import PropTypes from 'prop-types'
 
 export function TrinoList({ trinos }) {
   return (
@@ -15,9 +15,9 @@ export function TrinoList({ trinos }) {
         </Paper>
       ))}
     </section>
-  );
+  )
 }
 
 TrinoList.propTypes = {
   trinos: PropTypes.array,
-};
+}

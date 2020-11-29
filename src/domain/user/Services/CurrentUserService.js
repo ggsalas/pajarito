@@ -1,9 +1,9 @@
-import {Service} from '../../common/Service'
+import { Service } from '../../common/Service'
 
 export class CurrentUserService extends Service {
   #repository
 
-  constructor({repository}) {
+  constructor({ repository }) {
     super()
 
     this.#repository = repository

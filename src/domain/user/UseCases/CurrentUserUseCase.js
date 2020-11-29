@@ -1,11 +1,11 @@
-import {streamify, asyncInlineError} from '../../../decorators'
-import {UseCase} from '../../common/UseCase'
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class CurrentUserUseCase extends UseCase {
   #service
 
-  constructor({service}) {
+  constructor({ service }) {
     super()
 
     this.#service = service
@@ -19,4 +19,4 @@ class CurrentUserUseCase extends UseCase {
   }
 }
 
-export {CurrentUserUseCase}
+export { CurrentUserUseCase }

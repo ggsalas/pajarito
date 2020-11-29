@@ -1,5 +1,5 @@
-import {streamify, asyncInlineError} from '../../../decorators'
-import {UseCase} from '../../common/UseCase'
+import { streamify, asyncInlineError } from '../../../decorators'
+import { UseCase } from '../../common/UseCase'
 
 @streamify('execute')
 class RegisterUserUseCase extends UseCase {
@@ -10,7 +10,7 @@ class RegisterUserUseCase extends UseCase {
   constructor({
     repository,
     usernameValueObjectFactory,
-    passwordValueObjectFactory
+    passwordValueObjectFactory,
   }) {
     super()
     this.#repository = repository
@@ -19,14 +19,14 @@ class RegisterUserUseCase extends UseCase {
   }
 
   @asyncInlineError()
-  async execute({username, password}) {
+  async execute({ username, password }) {
     const user = await this.#repository.register({
-      username: this.#usernameValueObjectFactory({username}),
-      password: this.#passwordValueObjectFactory({password})
+      username: this.#usernameValueObjectFactory({ username }),
+      password: this.#passwordValueObjectFactory({ password }),
     })
 
     return user.toJSON()
   }
 }
 
-export {RegisterUserUseCase}
+export { RegisterUserUseCase }

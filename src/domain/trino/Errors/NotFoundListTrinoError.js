@@ -1,4 +1,4 @@
-import {TrinoError} from './TrinoError'
+import { TrinoError } from './TrinoError'
 
 export class NotFoundListTrinoError extends TrinoError {
   constructor() {

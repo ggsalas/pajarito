@@ -1,7 +1,7 @@
-import {Entity} from '../../common/Entity'
+import { Entity } from '../../common/Entity'
 
-import {UserEntity} from '../../user/Entities/UserEntity'
-import {BodyValueObject} from '../ValueObjects/BodyValueObject'
+import { UserEntity } from '../../user/Entities/UserEntity'
+import { BodyValueObject } from '../ValueObjects/BodyValueObject'
 
 export class TrinoEntity extends Entity {
   #timestamp
@@ -10,12 +10,12 @@ export class TrinoEntity extends Entity {
   #user
 
   static generateUUID() {
-    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, a =>
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (a) =>
       (a ^ ((Math.random() * 16) >> (a / 4))).toString(16)
     )
   }
 
-  static validate({body, id, user, timestamp}) {
+  static validate({ body, id, user, timestamp }) {
     if (!body || !id || !user || !timestamp) {
       throw new Error(
         `[TrinoEntity.validate] forbidden TrinoEntity body(${body}) id(${id}) user(${user}) timestamp(${timestamp})`
@@ -35,7 +35,7 @@ export class TrinoEntity extends Entity {
     }
   }
 
-  constructor({body, id, user, timestamp}) {
+  constructor({ body, id, user, timestamp }) {
     super()
     this.#timestamp = timestamp
     this.#id = id
@@ -48,7 +48,7 @@ export class TrinoEntity extends Entity {
       id: this.#id,
       timestamp: this.#timestamp,
       body: this.#body.toJSON(),
-      user: this.#user.toJSON()
+      user: this.#user.toJSON(),
     }
   }
 }

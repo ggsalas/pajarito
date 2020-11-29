@@ -1,4 +1,4 @@
-import {Pajarito} from '../../domain'
+import { Pajarito } from '../../domain'
 
 let domain
 describe('CurrentUserUseCase#execute', () => {
